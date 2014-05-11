@@ -1,13 +1,11 @@
 FORMAT: 1A
-HOST: http://http://nucleardata.stark.tw/
+HOST: http://nucleardata.stark.tw/
 
 # TW Radiation Map REST API
 台灣輻射地圖 REST API
 
 # Group Ushahidi Public REST API
 Public APIs provided by Ushahidi v2.X
-
-
 
 ## Get Reports [/api?task=incidents]
 Reports are retrieved by sending a HTTP GET request to the base URL with incidents as the task parameter. Only approved reports are fetched.
@@ -23,6 +21,7 @@ Reports are retrieved by sending a HTTP GET request to the base URL with inciden
     + catname (Optional, String, `&by=catname&name=Health`) ... Get reports that belong to a specified category name
 
 + Response 200 (application/json)
+{}
 
 ## Submit Reports [/api?task=report]
 A report is submitted by sending a HTTP POST request to the base URL with report as the task parameter. Additionally, the following parameters must also be specified
@@ -40,5 +39,4 @@ A report is submitted by sending a HTTP POST request to the base URL with report
     + longitude             (Required, Floating Number, ``) ... Longitude of the report's location
     + location_name         (Required, String, ``) ... Name of the location associated with the report
 
-+ Response 200 (application/json)
-
++ Response 200 
