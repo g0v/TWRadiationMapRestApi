@@ -1,0 +1,44 @@
+FORMAT: 1A
+HOST: http://http://nucleardata.stark.tw/
+
+# TW Radiation Map REST API
+台灣輻射地圖 REST API
+
+# Group Ushahidi Public REST API
+Public APIs provided by Ushahidi v2.X
+
+
+
+## Get Reports [/api?task=incidents]
+Reports are retrieved by sending a HTTP GET request to the base URL with incidents as the task parameter. Only approved reports are fetched.
+
+### Reports [GET]
++ Parameters
+    + sinceid (Optional, Number, `&by=sinceid&id=10`) ... Least report id that should be returned
+    + maxid (Optional, Number, `&by=maxid&id=500`) ... Maximum report id that should be returned
+    + locname (Optional, String, `&by=locname&name=Nairobi`) ... Get reports tagged with a specific location name
+    + locid (Optional, Number, `&by=locid&id=12`) ... Get reports tagged with a location with the specified id
+    + incidentid (Optional, Number, `&by=incidentid&id=50`) ... Retrieve a single report using its id
+    + catid (Optional,Number, `&by=catid&id=12`) ... Get reports that belong to a category with a id
+    + catname (Optional, String, `&by=catname&name=Health`) ... Get reports that belong to a specified category name
+
++ Response 200 (application/json)
+
+## Submit Reports [/api?task=report]
+A report is submitted by sending a HTTP POST request to the base URL with report as the task parameter. Additionally, the following parameters must also be specified
+
+### Submit Reports [POST]
++ Parameters
+    + incident_title        (Required, String, ``) ... Title of the report
+    + incident_description  (Required, String, ``) ... Description of the report
+    + incident_date         (Required, Date, `01/01/2010`) ... Date when the event being reported took place. The date format is mm/dd/yyyy
+    + incident_hour         (Required, Number, ``) ... Hour component of the time when the event took place. It must be in 
+    + incident_minute       (Required, Number) ... Minute component of the time when the event took place.
+    + incident_ampm         (Required, String, `am`) ... Did the event take place in the AM or PM
+    + incident_category     (Required, Multiple Number, `1,10`) ... The category id (or list of category ids) under which the report should be filed
+    + latitude              (Required, Floating Number, ``) ... Latitude of the report's location
+    + longitude             (Required, Floating Number, ``) ... Longitude of the report's location
+    + location_name         (Required, String, ``) ... Name of the location associated with the report
+
++ Response 200 (application/json)
+
