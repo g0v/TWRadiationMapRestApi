@@ -4,6 +4,57 @@ HOST: http://nucleardata.stark.tw/
 # TW Radiation Map REST API
 台灣輻射地圖 REST API
 
+# Group Account
+
+## IsUnique [/api?task=isunique&account={Account}]
+Check the account name can be used or not
++ Parameters
+    + Account   (Required, string) ... Check this account can be used or not
+
+### CheckAccount [GET]
++ Response 200 (application/json)
+    {
+        "Version": "1.0"
+        "Status": "OK"
+    }
+
+## Registed [/api?task=registed]
+Register to become new user
+
+### Registed [POST]
++ Response 200 (application/json)
+    {
+        "Version": "1.0"
+        "Status":  "OK"
+    }
+
+## Login [/api?task=login]
+User need to login before strting to upload radiation data.
++ Parameters
+    + Account   (Required, string)
+    + Passwd    (Required, string)
+
+### Login [POST]
++ Response 200 (application/json)
+    {
+        "Version": "1.0"
+        "Status": "OK"
+        "Result": {
+            "AccountToken": "xxx"
+            "Account": "KentHuang"
+        }
+    } 
+
+# Group Map
+
+## GetRadiationInfo [/api?task=radiationinfo]
+Get radiation information
+
+### GetRadiationInfo [GET]
++ Response 200 (application/json)
+
+
+
 # Group Ushahidi Public REST API
 Public APIs provided by Ushahidi v2.X
 
