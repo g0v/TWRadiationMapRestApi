@@ -1,62 +1,21 @@
 FORMAT: 1A
-HOST: http://nucleardata.stark.tw/
+HOST: http://u273.stark.tw/
 
 # TW Radiation Map REST API
 台灣輻射地圖 REST API
 
 # Group Account
 
-## IsUnique [/api?task=isunique&account={Account}]
-Check the account name can be used or not
-+ Parameters
-    + Account   (Required, string) ... Check this account can be used or not
-
-### CheckAccount [GET]
-+ Response 200 (application/json)
-    {
-        "Version": "1.0"
-        "Status": "OK"
-    }
-
-## Registed [/api?task=registed]
-Register to become new user
-
-### Registed [POST]
-+ Response 200 (application/json)
-    {
-        "Version": "1.0"
-        "Status":  "OK"
-    }
-
-## Login [/api?task=login]
-User need to login before strting to upload radiation data.
-+ Parameters
-    + Account   (Required, string)
-    + Passwd    (Required, string)
-
-### Login [POST]
-+ Response 200 (application/json)
-    {
-        "Version": "1.0"
-        "Status": "OK"
-        "Result": {
-            "AccountToken": "xxx"
-            "Account": "KentHuang"
-        }
-    } 
-
-# Group Map
-
-## GetRadiationInfo [/api?task=radiationinfo]
-Get radiation information
-
-### GetRadiationInfo [GET]
-+ Response 200 (application/json)
-
+See https://www.parse.com/docs
 
 
 # Group Ushahidi Public REST API
 Public APIs provided by Ushahidi v2.X
+
+Detail information please reference following GitHub link
+
+https://github.com/g0v/TWRadiationApp/blob/master/TWRadiationApp/Core/TWRadiationCoreAPI.m
+
 
 ## Get Reports [/api?task=incidents]
 Reports are retrieved by sending a HTTP GET request to the base URL with incidents as the task parameter. Only approved reports are fetched.
@@ -70,6 +29,7 @@ Reports are retrieved by sending a HTTP GET request to the base URL with inciden
     + incidentid (Optional, Number, `&by=incidentid&id=50`) ... Retrieve a single report using its id
     + catid (Optional,Number, `&by=catid&id=12`) ... Get reports that belong to a category with a id
     + catname (Optional, String, `&by=catname&name=Health`) ... Get reports that belong to a specified category name
+    + limit (Number, `&limit=9999`) ... Set the number of reports show in this query
 
 + Response 200 (application/json)
 {}
@@ -91,3 +51,12 @@ A report is submitted by sending a HTTP POST request to the base URL with report
     + location_name         (Required, String, ``) ... Name of the location associated with the report
 
 + Response 200 
+
+## Get Categories [/api?task=categories]
+List all categories
+
+### Categorie [GET]
++ Parameters
+    + limit (Number, `&limit=9999`) ... Set the number of reports show in this query
++ Response 200 (application/json)
+{}
